@@ -71,7 +71,8 @@ exports.postCart = (req, res, next) => {
   const prodId = req.body.productId
   let fetchedCart
   let newQuantity = 1
-  req.user.getCart()
+  req.user
+  .getCart()
   .then(cart => {
     fetchedCart = cart
     return cart.getProducts({ where: { id: prodId } })
